@@ -1,0 +1,84 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>nl.rgansevles.servoy</groupId>
+	<artifactId>servoy-wsclient-plugin</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+
+	<description>
+		A servoy plugin for accessing websocket servers.
+	</description>
+
+	<properties>
+		<websocket.api.version>1.1</websocket.api.version>
+		<glassfish.tyrus.version>1.13.1</glassfish.tyrus.version>
+		<glassfish.grizzly.version>2.3.25</glassfish.grizzly.version>
+
+		<maven.compiler.source>1.7</maven.compiler.source>
+		<maven.compiler.target>1.7</maven.compiler.target>
+	</properties>
+
+	<dependencies>
+		<!-- Servoy lib for compiling -->
+		<dependency>
+			<groupId>com.servoy</groupId>
+			<artifactId>j2db</artifactId>
+			<version>7.4.1</version>
+			<scope>system</scope>
+			<systemPath>${project.basedir}/lib/servoy-j2db.7.4.1.jar</systemPath>
+		</dependency>
+		<dependency>
+			<groupId>com.servoy</groupId>
+			<artifactId>js</artifactId>
+			<version>7.4.1</version>
+			<scope>system</scope>
+			<systemPath>${project.basedir}/lib/servoy-js.7.4.1.jar</systemPath>
+		</dependency>
+
+		<!-- Tyrus, websocket client implementation -->
+		<dependency>
+			<groupId>org.glassfish.tyrus.bundles</groupId>
+			<artifactId>tyrus-standalone-client-jdk</artifactId>
+			<version>${glassfish.tyrus.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.glassfish.tyrus</groupId>
+			<artifactId>tyrus-container-grizzly-client</artifactId>
+			<version>${glassfish.tyrus.version}</version>
+		</dependency>
+
+		<!-- Testing -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.8.1</version>
+			<scope>test</scope>
+		</dependency>
+
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<version>3.1.0</version>
+				<configuration>
+					<descriptors>
+						<descriptor>src/assembly/distribution.xml</descriptor>
+					</descriptors>
+				</configuration>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>single</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+
+	</build>
+
+</project>

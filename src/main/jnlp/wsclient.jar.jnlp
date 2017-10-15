@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<jnlp spec="1.0+"
+      codebase="%%serverURL%%"
+      href="/servoy-client/plugins/wsclient.jar.jnlp">
+   <information> 
+      <title>WebsocketClient Plugin</title> 
+      <offline-allowed/>
+   </information>
+   <resources>
+      <jar href="/plugins/wsclient.jar" download="eager" part="servoy-wsclient-plugin" version="${project.version}"/>
+
+      <jar href="/plugins/wsclient/tyrus-standalone-client-jdk-${glassfish.tyrus.version}.jar" download="eager" part="tyrus-standalone-client-jdk" version="${glassfish.tyrus.version}"/>
+      <package name="javax.websocket.*" part="tyrus-standalone-client-jdk" recursive="true"/>
+      <package name="org.glassfish.tyrus.*" part="tyrus-standalone-client-jdk" recursive="true"/>
+   </resources>
+   <component-desc/>
+        <security>
+                <all-permissions/>
+        </security>
+</jnlp>
